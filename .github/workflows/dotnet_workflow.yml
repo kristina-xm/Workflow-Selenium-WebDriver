@@ -27,6 +27,17 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
     - name: Run TestProject1 Tests
       env: 
         CHROMEWEBDRIVER : /urs/bin/google-chrome
@@ -39,3 +50,4 @@ jobs:
       env: 
         CHROMEWEBDRIVER : /urs/bin/google-chrome
       run: dotnet test TestProject3/TestProject3.csproj --no-build --verbosity normal
+

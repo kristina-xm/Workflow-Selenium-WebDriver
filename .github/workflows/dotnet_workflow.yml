@@ -27,7 +27,15 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Run UI Tests
+    - name: Run TestProject1 Tests
       env: 
         CHROMEWEBDRIVER : /urs/bin/google-chrome
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test TestProject1/TestProject1.csproj --no-build --verbosity normal
+    - name: Run TestProject2 Tests
+      env: 
+        CHROMEWEBDRIVER : /urs/bin/google-chrome
+      run: dotnet test TestProject2/TestProject2.csproj --no-build --verbosity normal
+    - name: Run TestProject3 Tests
+      env: 
+        CHROMEWEBDRIVER : /urs/bin/google-chrome
+      run: dotnet test TestProject3/TestProject3.csproj --no-build --verbosity normal
